@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use App\Models\Employer;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Jobs>
@@ -17,8 +18,9 @@ class JobsFactory extends Factory
     public function definition(): array
     {
         return [
-            'title' => $this->faker->jobTitle(),
+            'title' => fake()->jobTitle(),
             'salary' => '$' . rand(10000, 99999),
+            'employer_id' => Employer::factory(),
             'created_at' => now(),
             'updated_at' => now(),
         ];
